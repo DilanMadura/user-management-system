@@ -15,6 +15,12 @@
 	<description>This project for user manages system</description>
 	<properties>
 		<java.version>17</java.version>
+		<jacoco.version>0.8.11</jacoco.version>
+		<sonar.exclusions>
+			**/model/**,
+			**/config/**,
+			**/UserManagementSystemApplication.java
+		</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -49,6 +55,11 @@
 			<version>5.9.2</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.11</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -64,6 +75,25 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.11</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 		<finalName>user-management-system-docker</finalName>
