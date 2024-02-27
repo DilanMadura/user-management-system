@@ -1,0 +1,37 @@
+server:
+  port: 8083
+base-url:
+  context: /user-management-system/1.0.0
+spring:
+  application:
+    name: user-management-system
+    version: 1.0.0
+
+springdoc:
+  #version: '@springdoc.version@'
+  #api-docs:
+  #enabled: false
+  swagger-ui:
+    #path: /mobile-house-manage-system/1.0.0/swagger-ui.html
+    display-request-duration: true
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    use-root-path: true
+  show-actuator: true
+logging:
+  level:
+    org:
+      springframework:
+        web: INFO
+        hibernate: ERROR
+    com: INFO
+    root: INFO
+  pattern:
+    console: "%clr(%d{yy-MM-dd E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){yellow} %clr(:){red} %clr(%m){faint}%n"
+    file: "%d{yy-MM-dd E HH:mm:ss.SSS } [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: C:\Users\ASUS\Documents\logs\elk-stack.log
+
+
+
