@@ -16,12 +16,12 @@ class UserControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    /*@Test
+    @Test
     void userDetails() throws Exception
     {
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/user-management-system/1.0.0/user/info")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-    }*/
+    }
 }
