@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-management-system
+  labels:
+    app: user-management-system
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: user-management-system
+  template:
+    metadata:
+      labels:
+        app: user-management-system
+    spec:
+      containers:
+        - name: user-management-system
+          image: dmjtech/user-management-system:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+          env: # Setting Environmental Variables
+            - name: DB_HOST   # Setting Database host address from configMap
+              value: mysql
+            - name: DB_NAME  # Setting Database name from configMap
+              value: user_management_system_db
+            - name: DB_USERNAME  # Setting Database username from Secret
+              value: root
+            - name: DB_PASSWORD # Setting Database password from Secret
+              value: root
+---
+
+apiVersion: v1 # Kubernetes API version
+kind: Service # Kubernetes' resource kind we are creating
+metadata: # Metadata of the resource kind we are creating
+  name: user-management-system
+spec:
+  selector:
+    app.kubernetes.io/name: user-management-system
+  ports:
+    - protocol: TCP
+      port: 8081 # The port that the service is running on in the cluster
+      targetPort: 8081 # The port exposed by the service
+  type: NodePort # type of the service.

@@ -11,9 +11,12 @@ import lombok.NoArgsConstructor;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserInfoDto {
-    @Schema(description = "user id", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
-    private Long id;
+    @Schema(description = "id", example = "1", requiredMode = Schema.RequiredMode.REQUIRED)
+    private Integer id;
 
     @Schema(description = "user name", example = "Dilan Jayaneththi", requiredMode = Schema.RequiredMode.REQUIRED)
     private String name;
+
+    @Schema(description = "email", example = "d@gmail.com", requiredMode = Schema.RequiredMode.REQUIRED)
+    private String email;
 }
